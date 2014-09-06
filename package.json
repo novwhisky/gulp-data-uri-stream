@@ -1,6 +1,6 @@
 {
   "name": "gulp-data-uri-stream",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "gulp streaming module to convert generic input to a data uri",
   "main": "index.js",
   "scripts": {
