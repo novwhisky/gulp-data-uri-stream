@@ -1,0 +1,21 @@
+{
+  "name": "gulp-data-uri-stream",
+  "version": "0.0.0",
+  "description": "gulp streaming module to convert generic input to a data uri",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp",
+    "data-uri",
+    "stream"
+  ],
+  "author": "Nathan Witt <wittnl@gmail.com> (http://wi.tt/)",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp-util": "^3.0.1",
+    "through2": "^0.6.1",
+    "mime": "^1.2.11"
+  }
+}
