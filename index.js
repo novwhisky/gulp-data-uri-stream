@@ -2,7 +2,7 @@ var through = require('through2');
 var mime = require('mime');
 var gutil = require('gulp-util');
 
-function URIfy() {
+function URIfy(options) {
     // creating a stream through which each file will pass
     var stream = through.obj(function(file, enc, cb) {
 
@@ -10,6 +10,13 @@ function URIfy() {
         if(file.isBuffer()) {
             var header = "data:" + mime.lookup(file.path) + ";base64,";
             var dURI = header + file.contents.toString('base64');
+
+            // This needs to be a JSON flag
+            if(options.output == "json") {
+                var o = {};
+                o[file.path] = dURI;
+                dURI = JSON.stringify(o);
+            }
 
             file.contents = new Buffer(dURI);
         }else{
