@@ -6,7 +6,7 @@ function getOptions(optset) {
     optset = optset || {};
 
     var defaults = {
-        output: "txt",
+        output: "vinyl",
         encoding: "base64"
     };
 
@@ -27,8 +27,8 @@ function URIfy(overrides) {
 
         // buffers only for now
         if(file.isBuffer()) {
-            var header = "data:" + mime.lookup(file.path) + ";base64,";
-            var dURI = header + file.contents.toString('base64');
+            var header = "data:" + mime.lookup(file.path) + ";" + options.encoding +",";
+            var dURI = header + encodeURIComponent(file.contents.toString(options.encoding));
 
             // This needs to be a JSON flag
             if(options.output == "json") {
