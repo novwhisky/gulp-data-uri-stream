@@ -11,6 +11,10 @@
     "data-uri",
     "stream"
   ],
+  "repository" : { 
+    "type" : "git",
+    "url" : "http://github.com/wittnl/gulp-data-uri-stream.git"
+  }
   "author": "Nathan Witt <wittnl@gmail.com> (http://wi.tt/)",
   "license": "MIT",
   "dependencies": {
