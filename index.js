@@ -2,7 +2,26 @@ var through = require('through2');
 var mime = require('mime');
 var gutil = require('gulp-util');
 
-function URIfy(options) {
+function getOptions(optset) {
+    optset = optset || {};
+
+    var defaults = {
+        output: "txt",
+        encoding: "base64"
+    };
+
+    for(var key in defaults) {
+        if(optset.hasOwnProperty(key) === false) {
+            optset[key] = defaults[key];
+        }
+    }
+
+    return optset;
+}
+
+function URIfy(overrides) {
+    var options = getOptions(overrides);
+
     // creating a stream through which each file will pass
     var stream = through.obj(function(file, enc, cb) {
 
