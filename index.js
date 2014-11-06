@@ -1,3 +1,4 @@
+var path = require('path');
 var through = require('through2');
 var mime = require('mime');
 var gutil = require('gulp-util');
@@ -24,16 +25,16 @@ function URIfy(overrides) {
 
     // creating a stream through which each file will pass
     var stream = through.obj(function(file, enc, cb) {
-
         // buffers only for now
         if(file.isBuffer()) {
+            var filePath = file.path.replace(file.cwd + path.sep, "");
             var header = "data:" + mime.lookup(file.path) + ";" + options.encoding +",";
             var dURI = header + encodeURIComponent(file.contents.toString(options.encoding));
 
             // This needs to be a JSON flag
             if(options.output == "json") {
                 var o = {};
-                o[file.path] = dURI;
+                o[filePath] = dURI;
                 dURI = JSON.stringify(o);
             }
 
